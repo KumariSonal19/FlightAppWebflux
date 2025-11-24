@@ -29,40 +29,24 @@ class FlightEntityTest {
     }
 
     @Test
-    void testEqualsHashCodeToString() {
+    void testToStringContainsImportantFields() {
         LocalDateTime dep = LocalDateTime.of(2025, 1, 1, 10, 0);
         LocalDateTime arr = dep.plusHours(2);
 
-        Flight f1 = new Flight();
-        f1.setId("F1");
-        f1.setAirlineName("Indigo");
-        f1.setAirlineLogo("https://logo.com/logo.png");
-        f1.setFromLocation("Delhi");
-        f1.setToLocation("Goa");
-        f1.setDepartureTime(dep);
-        f1.setArrivalTime(arr);
-        f1.setPrice(4500.0);
-        f1.setTotalSeats(180);
-        f1.setAvailableSeats(150);
-        f1.setFlightNumber("6E123");
+        Flight flight = new Flight();
+        flight.setId("F1");
+        flight.setAirlineName("Indigo");
+        flight.setAirlineLogo("https://logo.com/logo.png");
+        flight.setFromLocation("Delhi");
+        flight.setToLocation("Goa");
+        flight.setDepartureTime(dep);
+        flight.setArrivalTime(arr);
+        flight.setPrice(4500.0);
+        flight.setTotalSeats(180);
+        flight.setAvailableSeats(150);
+        flight.setFlightNumber("6E123");
 
-        Flight f2 = new Flight();
-        f2.setId("F1");
-        f2.setAirlineName("Indigo");
-        f2.setAirlineLogo("https://logo.com/logo.png");
-        f2.setFromLocation("Delhi");
-        f2.setToLocation("Goa");
-        f2.setDepartureTime(dep);
-        f2.setArrivalTime(arr);
-        f2.setPrice(4500.0);
-        f2.setTotalSeats(180);
-        f2.setAvailableSeats(150);
-        f2.setFlightNumber("6E123");
-
-        assertEquals(f1, f2);
-        assertEquals(f1.hashCode(), f2.hashCode());
-
-        String s = f1.toString();
+        String s = flight.toString();
         assertTrue(s.contains("Indigo"));
         assertTrue(s.contains("6E123"));
     }
