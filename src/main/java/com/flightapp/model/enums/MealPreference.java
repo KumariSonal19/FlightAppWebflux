@@ -1,6 +1,6 @@
 package com.flightapp.model.enums;
 
-public enum MealType {
+public enum MealPreference {
     VEG,
     NON_VEG,
     NONE

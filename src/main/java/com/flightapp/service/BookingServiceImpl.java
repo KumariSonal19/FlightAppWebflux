@@ -7,8 +7,6 @@ import com.flightapp.exception.BookingException;
 import com.flightapp.exception.ResourceNotFoundException;
 import com.flightapp.model.entity.Booking;
 import com.flightapp.repository.BookingRepository;
-import com.flightapp.service.BookingService;
-import com.flightapp.service.FlightService;
 import com.flightapp.util.PnrGenerator;
 import com.flightapp.util.ValidationUtil;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +34,7 @@ public class BookingServiceImpl implements BookingService {
         
         return flightService.getFlightById(flightId)
                 .flatMap(flight -> {
-                    // Validate seat numbers
+               
                     boolean validSeats = bookingRequest.getPassengers().stream()
                             .allMatch(p -> ValidationUtil.isValidSeatNumber(p.getSeatNumber()));
                     
@@ -58,7 +56,6 @@ public class BookingServiceImpl implements BookingService {
                                 booking.setBookingDate(LocalDateTime.now());
                                 booking.setTotalPrice(updatedFlight.getPrice() * seatsToBook);
                                 
-                                // Store flight details for reference
                                 booking.setAirlineName(updatedFlight.getAirlineName());
                                 booking.setFromLocation(updatedFlight.getFromLocation());
                                 booking.setToLocation(updatedFlight.getToLocation());

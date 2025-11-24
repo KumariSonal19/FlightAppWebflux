@@ -16,12 +16,10 @@ public class PnrGenerator {
     public String generatePnr() {
         StringBuilder pnr = new StringBuilder("FLT");
         
-        // Add timestamp component
         String timestamp = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyMMdd"));
         pnr.append(timestamp);
         
-        // Add random characters
         for (int i = 0; i < PNR_LENGTH; i++) {
             pnr.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
         }

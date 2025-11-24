@@ -62,15 +62,13 @@ public class BookingController {
 
         Mono<ResponseEntity<ApiResponse<Void>>> successResponse =
                 Mono.just(ResponseEntity.ok(
-                        ApiResponse.success("Booking cancelled successfully", null)
-                ));
+                        ApiResponse.success("Booking cancelled successfully", null)));
 
         java.util.function.Function<Throwable, Mono<ResponseEntity<ApiResponse<Void>>>> errorResponse =
                 error -> Mono.just(
                         ResponseEntity
-                                .status(HttpStatus.BAD_REQUEST)
-                                .body(ApiResponse.error(error.getMessage()))
-                );
+                                .status(HttpStatus.NOT_FOUND)
+                                .body(ApiResponse.error(error.getMessage())));
 
         return bookingService.cancelBooking(pnr)
                 .then(successResponse)

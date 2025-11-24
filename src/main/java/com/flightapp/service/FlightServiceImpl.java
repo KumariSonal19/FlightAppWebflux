@@ -5,7 +5,6 @@ import com.flightapp.exception.BookingException;
 import com.flightapp.exception.ResourceNotFoundException;
 import com.flightapp.model.entity.Flight;
 import com.flightapp.repository.FlightRepository;
-import com.flightapp.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class FlightServiceImpl implements FlightService {
     public Mono<Flight> addFlightInventory(Flight flight) {
         log.info("Adding flight inventory: {}", flight.getFlightNumber());
         
-        // Set available seats equal to total seats initially
+     
         flight.setAvailableSeats(flight.getTotalSeats());
         
         return flightRepository.save(flight)
