@@ -34,13 +34,20 @@ class FlightServiceImplNegativeTest {
 
     @BeforeEach
     void setup() {
-        flight = new Flight(
-                "1", "Indigo", "logo", "Delhi", "Mumbai",
-                LocalDateTime.now().plusDays(1),
-                LocalDateTime.now().plusDays(1).plusHours(2),
-                4500.0, 100, 100, "6E123"
-        );
+        flight = new Flight();
+        flight.setId("1");
+        flight.setAirlineName("Indigo");
+        flight.setAirlineLogo("logo");
+        flight.setFromLocation("Delhi");
+        flight.setToLocation("Mumbai");
+        flight.setDepartureTime(LocalDateTime.now().plusDays(1));
+        flight.setArrivalTime(LocalDateTime.now().plusDays(1).plusHours(2));
+        flight.setPrice(4500.0);
+        flight.setTotalSeats(100);
+        flight.setAvailableSeats(100);
+        flight.setFlightNumber("6E123");
     }
+
 
     @Test
     void testGetFlightById_NotFound() {

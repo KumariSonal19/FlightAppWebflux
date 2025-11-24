@@ -10,7 +10,6 @@ import com.flightapp.model.entity.Booking;
 import com.flightapp.model.entity.Flight;
 import com.flightapp.model.entity.Passenger;
 import com.flightapp.repository.BookingRepository;
-import com.flightapp.service.FlightService;
 import com.flightapp.util.PnrGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
