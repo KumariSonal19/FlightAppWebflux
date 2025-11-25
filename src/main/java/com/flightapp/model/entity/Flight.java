@@ -3,6 +3,7 @@ package com.flightapp.model.entity;
 import com.flightapp.model.dto.AbstractFlightInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +12,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
+@ToString(callSuper = true)
 @Document(collection = "flights")
 public class Flight extends AbstractFlightInfo {
 
