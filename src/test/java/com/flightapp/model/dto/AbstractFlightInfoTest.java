@@ -34,4 +34,31 @@ class AbstractFlightInfoTest {
         assertEquals(dep, info.getDepartureTime());
         assertEquals(arr, info.getArrivalTime());
     }
+    @Test
+    void testToStringAndEquality() {
+        AbstractFlightInfo info1 = new AbstractFlightInfo();
+        info1.setAirlineName("Air");
+        info1.setAirlineLogo("L");
+        info1.setFromLocation("A");
+        info1.setToLocation("B");
+        info1.setPrice(100.0);
+        info1.setFlightNumber("X1");
+        info1.setDepartureTime(LocalDateTime.now().plusDays(1));
+        info1.setArrivalTime(LocalDateTime.now().plusDays(1).plusHours(2));
+
+        AbstractFlightInfo info2 = new AbstractFlightInfo();
+        info2.setAirlineName("Air");
+        info2.setAirlineLogo("L");
+        info2.setFromLocation("A");
+        info2.setToLocation("B");
+        info2.setPrice(100.0);
+        info2.setFlightNumber("X1");
+        info2.setDepartureTime(info1.getDepartureTime());
+        info2.setArrivalTime(info1.getArrivalTime());
+
+        assertEquals(info1, info2);
+        assertEquals(info1.hashCode(), info2.hashCode());
+        assertTrue(info1.toString().contains("Air"));
+    }
+
 }
